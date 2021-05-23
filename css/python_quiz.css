@@ -1,5 +1,7 @@
 body {
     background-color: #FAFAFA;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
 }
 
 h1 {
@@ -24,6 +26,7 @@ h1 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
 }
 
 .buttons {
@@ -63,6 +66,7 @@ aside {
     background-color: #fff;
     padding: 2%;
     border-radius: 10px;
+    opacity: 0.8;
 }
 
 aside > p {
@@ -72,6 +76,7 @@ aside > p {
 }
 
 .num {
+    opacity: 1;
     justify-content: center;
     display: inline-flex;
     align-items: center;
@@ -93,6 +98,7 @@ aside > p {
     margin-left: 2%;
     margin-right: 2%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
 }
 
 /**/
@@ -101,6 +107,7 @@ aside > p {
     transform: scale(1.03);
     background-color: #276edb;
     color: white;
+    opacity: 1;
 }
 
 button:hover {
