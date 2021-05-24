@@ -108,11 +108,13 @@ aside > p {
     background-color: #276edb;
     color: white;
     opacity: 1;
+    cursor: pointer;
 }
 
 button:hover {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
     transform: scale(1.03);
+    cursor: pointer;
     /*background-color: rgba(26, 179, 2, 0.68);*/
     /*color: white;*/
 }
