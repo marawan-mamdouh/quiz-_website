@@ -6,7 +6,7 @@
 		      content = "IE=edge">
 		<meta name = "viewport"
 		      content = "width=device-width, initial-scale=1.0">
-		<title>Login</title>
+		<title>Registration</title>
 		<link rel = "icon"
 		      type = "image/png"
 		      sizes = "56x56"
@@ -246,43 +246,35 @@
 							<div class = "login-box">
 								<form action = "">
 									<div class = "form-group">
-										<h4 class = "login-title">Welcome back</h4>
-										<p class = "login-p">Please login to your account.</p>
+										<h4 class = "login-title">Welcome </h4>
+										<p class = "login-p">Please enter email and password to register.</p>
 									</div>
 									<div class = "form-group">
 										<input type = "email"
-										       id = "email"
+										       id = "email-r"
 										       required
 										       placeholder = "Enter your name"
 										       class = "form-control">
 										<input type = "password"
-										       id = "pass"
+										       id = "pass-r"
+										       minlength = "8"
+										       required
+										       placeholder = "Enter your password"
+										       class = "form-control">
+										<input type = "password"
+										       id = "repass-r"
 										       minlength = "8"
 										       required
 										       placeholder = "Enter your password"
 										       class = "form-control">
 									</div>
-									<div class = "input-group check-field">
-										<div>
-											<input type = "checkbox"
-											       id = "test"
-											       name = "test"
-											       value = "">
-											<label class = "label"
-											       for = "test"> Remember Me
-											</label>
-											<br>
-										</div>
-										<a href = "#"
-										   class = "forgot">Forgot password?</a>
-									</div>
 									<div class = "form-group text-center">
 										<button type = "submit"
-										        id = "submit"
-										        onclick = "return validate()"
-										        class = "btn btn-primary">Login
+										        id = "register-r"
+										        onclick = "return register()"
+										        class = "btn btn-primary">Register
 										</button>
-										<p class = "mb-0"><a href = "registration.html">New User? Sign Up</a></p>
+										<p class = "mb-0"><a href = "index.html">Have account? Login</a></p>
 									</div>
 								</form>
 							</div>
