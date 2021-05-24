@@ -37,7 +37,7 @@ function validate() {
         if (email === users[i].email && password === users[i].pass) {
             valid = true;
             alert("Login successfully");
-            window.location = "../dash.html";
+            window.location = "../dashboard.html";
             return false;
         } else {
             valid = false;
