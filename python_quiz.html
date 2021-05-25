@@ -22,9 +22,10 @@
 			<h1>Python Quiz</h1>
 			<section>
 				<div class = "question">
-					<h3>Question 1</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dolorum eligendi impedit in
-					   magnam nemo quibusdam quos sint totam voluptas.</p>
+					<h3 id = "question-number">Question 1</h3>
+					<p id = "question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dolorum
+					                   eligendi impedit in
+					                   magnam nemo quibusdam quos sint totam voluptas.</p>
 				</div>
 				<div class = "div-answer answer"
 				     onclick = "answer1Click()">
@@ -32,6 +33,7 @@
 					       id = "answer1"
 					       name = "answer">
 					<label class = "label"
+					       id = "label-answer1"
 					       for = "answer1">120m
 					</label>
 					<div class = "highlight"></div>
@@ -42,6 +44,7 @@
 					       id = "answer2"
 					       name = "answer">
 					<label class = "label"
+					       id = "label-answer2"
 					       for = "answer2">220m
 					</label>
 					<div class = "highlight"></div>
@@ -52,6 +55,7 @@
 					       id = "answer3"
 					       name = "answer">
 					<label class = "label"
+					       id = "label-answer3"
 					       for = "answer3">300m
 					</label>
 					<div class = "highlight"></div>
@@ -62,13 +66,16 @@
 					       id = "answer4"
 					       name = "answer">
 					<label class = "label"
+					       id = "label-answer4"
 					       for = "answer4">None of these
 					</label>
 					<div class = "highlight"></div>
 				</div>
 				<div class = "buttons">
-					<button id = "prev">Prev</button>
-					<button>Next</button>
+					<button onclick = "prev()">Prev</button>
+					<button id = "next"
+					        onclick = "next()">Next
+					</button>
 				</div>
 				<div class = "explanation">
 					<h3>Explanation</h3>
