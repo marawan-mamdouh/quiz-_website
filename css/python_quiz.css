@@ -21,7 +21,7 @@ h1 {
 }
 
 .answer {
-    padding: 1% 3%;
+    padding: 2% 4%;
     margin: 2%;
     background-color: #fff;
     border-radius: 10px;
@@ -117,4 +117,31 @@ button:hover {
     cursor: pointer;
     /*background-color: rgba(26, 179, 2, 0.68);*/
     /*color: white;*/
+}
+
+input {
+    /*visibility: hidden;*/
+    display: none;
+}
+
+.div-answer {
+    position: relative;
+    /*width: 50%;*/
+}
+
+.div-answer .highlight {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div.div-answer input:checked ~ div.highlight {
+    background-color: goldenrod;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
 }
