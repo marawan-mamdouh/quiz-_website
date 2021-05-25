@@ -336,6 +336,7 @@ document.getElementById("answer1").value = HTMLquestions[questionNumber - 1].cho
 document.getElementById("answer2").value = HTMLquestions[questionNumber - 1].choices[1];
 document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
 document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
+document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
 
 function answer1Click() {
     document.getElementById("answer1").checked = true;
@@ -356,6 +357,7 @@ function answer4Click() {
 function next() {
     if (document.querySelector('input[name="answer"]:checked') !== null) {
         if (questionNumber < HTMLquestions.length) {
+            document.getElementsByClassName("num")[questionNumber].style.backgroundColor = 'green';
             answers.push(document.querySelector('input[name="answer"]:checked').value)
             answerID.push(document.querySelector('input[name="answer"]:checked').id)
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
@@ -369,6 +371,7 @@ function next() {
             document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
             document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
             document.getElementById("span").innerText = questionNumber + "";
+
         } else if (questionNumber === HTMLquestions.length) {
             answers.push(document.querySelector('input[name="answer"]:checked').value)
             answerID.push(document.querySelector('input[name="answer"]:checked'))
@@ -395,6 +398,7 @@ function next() {
 
 function prev() {
     if (questionNumber !== 1) {
+        document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#bad';
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
