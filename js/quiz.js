@@ -368,6 +368,7 @@ function next() {
             document.getElementById("answer2").value = HTMLquestions[questionNumber - 1].choices[1];
             document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
             document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
+            document.getElementById("span").innerText = questionNumber + "";
         } else if (questionNumber === HTMLquestions.length) {
             answers.push(document.querySelector('input[name="answer"]:checked').value)
             answerID.push(document.querySelector('input[name="answer"]:checked'))
@@ -412,5 +413,6 @@ function prev() {
         document.getElementById("answer2").value = HTMLquestions[questionNumber - 1].choices[1];
         document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
         document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
+        document.getElementById("span").innerText = questionNumber + "";
     }
 }

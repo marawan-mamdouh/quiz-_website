@@ -70,7 +70,8 @@ aside {
 }
 
 aside > p {
-    text-align: center;
+    /*text-align: center;*/
+    margin-left: 5%;
     font-weight: bold;
     font-size: larger;
 }
