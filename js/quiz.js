@@ -367,7 +367,7 @@ function next() {
         }
 
         if (questionNumber < HTMLquestions.length) {
-            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
+            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
@@ -389,7 +389,7 @@ function next() {
         } else if (questionNumber === HTMLquestions.length) {
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
-            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
+            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
             const sum = score.reduce((a, b) => a + b, 0);
             alert(sum)
             document.getElementById("next").disabled = true;
@@ -411,7 +411,7 @@ function next() {
 function prev() {
     if (questionNumber !== 1) {
         document.getElementById("next").innerText = "Next";
-        document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#bad';
+        document.getElementsByClassName("num")[questionNumber - 2].style.backgroundColor = '#c5c5c5';
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
