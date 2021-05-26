@@ -7,7 +7,7 @@ let HTMLquestions = [
 
     {
         question: "HTML is what type of language ?",
-        choices: ["Scripting Language", "220m", "Programming Language", "Network Protocol"],
+        choices: ["Scripting Language", "Markup Language", "Programming Language", "Network Protocol"],
         answer: 2
 
     },
@@ -355,13 +355,24 @@ function answer4Click() {
 }
 
 function next() {
+    console.log("before if -> " + questionNumber)
     if (document.querySelector('input[name="answer"]:checked') !== null) {
+        if (document.querySelector('input[name="answer"]:checked').value === HTMLquestions[questionNumber - 1].choices[HTMLquestions[questionNumber - 1].answer - 1]) {
+            score[questionNumber - 1] = 10;
+            console.log("questionNumber -> " + questionNumber)
+        } else if (document.querySelector('input[name="answer"]:checked').value !== HTMLquestions[questionNumber - 1].choices[HTMLquestions[questionNumber - 1].answer - 1]) {
+            score[questionNumber - 1] = 0;
+            console.log("questionNumber -> " + questionNumber)
+        }
+
         if (questionNumber < HTMLquestions.length) {
             document.getElementsByClassName("num")[questionNumber].style.backgroundColor = 'green';
-            answers.push(document.querySelector('input[name="answer"]:checked').value)
-            answerID.push(document.querySelector('input[name="answer"]:checked').id)
+            answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
+            answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
             document.getElementById("question").innerText = HTMLquestions[questionNumber - 1].question;
+            console.log(answers);
+            console.log(answerID);
             document.getElementById("label-answer1").innerText = HTMLquestions[questionNumber - 1].choices[0];
             document.getElementById("label-answer2").innerText = HTMLquestions[questionNumber - 1].choices[1];
             document.getElementById("label-answer3").innerText = HTMLquestions[questionNumber - 1].choices[2];
@@ -371,22 +382,18 @@ function next() {
             document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
             document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
             document.getElementById("span").innerText = questionNumber + "";
-
+            if (questionNumber === HTMLquestions.length) {
+                document.getElementById("next").innerText = "Finish";
+            }
         } else if (questionNumber === HTMLquestions.length) {
-            answers.push(document.querySelector('input[name="answer"]:checked').value)
-            answerID.push(document.querySelector('input[name="answer"]:checked'))
+            answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
+            answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             const sum = score.reduce((a, b) => a + b, 0);
             alert(sum)
             document.getElementById("next").disabled = true;
+            document.getElementById("prev").disabled = true;
         }
-
-        if (document.querySelector('input[name="answer"]:checked').value === HTMLquestions[questionNumber - 1].choices[HTMLquestions[questionNumber - 1].answer - 1]) {
-            score.push(10);
-            console.log(score)
-            // alert(score);
-        } else {
-            score.push(0)
-        }
+        console.log(score)
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
@@ -394,21 +401,22 @@ function next() {
     } else {
         alert("please chose answer")
     }
+    if (answerID[questionNumber - 1] !== undefined) {
+        document.getElementById(answerID[questionNumber - 1]).checked = true;
+    }
 }
 
 function prev() {
     if (questionNumber !== 1) {
+        document.getElementById("next").innerText = "Next";
         document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#bad';
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
         document.getElementById("answer4").checked = false;
-        answers.pop();
-        score.pop();
         document.getElementById("question-number").innerText = "Question " + --questionNumber;
-        document.getElementById(answerID[answerID.length - 1]).checked = true;
+        document.getElementById(answerID[questionNumber - 1]).checked = true;
         document.getElementById("question").innerText = HTMLquestions[questionNumber - 1].question;
-        answerID.pop();
         document.getElementById("label-answer1").innerText = HTMLquestions[questionNumber - 1].choices[0];
         document.getElementById("label-answer2").innerText = HTMLquestions[questionNumber - 1].choices[1];
         document.getElementById("label-answer3").innerText = HTMLquestions[questionNumber - 1].choices[2];
