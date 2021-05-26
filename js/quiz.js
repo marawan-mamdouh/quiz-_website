@@ -336,7 +336,8 @@ document.getElementById("answer1").value = HTMLquestions[questionNumber - 1].cho
 document.getElementById("answer2").value = HTMLquestions[questionNumber - 1].choices[1];
 document.getElementById("answer3").value = HTMLquestions[questionNumber - 1].choices[2];
 document.getElementById("answer4").value = HTMLquestions[questionNumber - 1].choices[3];
-document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
+
+// document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
 
 function answer1Click() {
     document.getElementById("answer1").checked = true;
@@ -366,7 +367,7 @@ function next() {
         }
 
         if (questionNumber < HTMLquestions.length) {
-            document.getElementsByClassName("num")[questionNumber].style.backgroundColor = 'green';
+            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
@@ -388,6 +389,7 @@ function next() {
         } else if (questionNumber === HTMLquestions.length) {
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
+            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = 'green';
             const sum = score.reduce((a, b) => a + b, 0);
             alert(sum)
             document.getElementById("next").disabled = true;
