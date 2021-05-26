@@ -9,6 +9,7 @@ body {
 
 h1 {
     text-align: center;
+    color: #00302c; /*#182f2d;*/
     /*border-bottom: blue 2px solid;*/
 }
 
@@ -37,7 +38,6 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-bottom: 4%;
-
 }
 
 button {
@@ -58,7 +58,6 @@ section {
     display: inline-block;
     width: 73%;
     margin-right: 4%;
-
 }
 
 aside {
@@ -67,7 +66,7 @@ aside {
     display: inline-block;
     width: 18%;
     background-color: #fff;
-    padding: 2%;
+    padding: 1%;
     border-radius: 10px;
     opacity: 0.8;
 }
@@ -84,7 +83,7 @@ aside > p {
     justify-content: center;
     display: inline-flex;
     align-items: center;
-    background-color: #bad;
+    background-color: #c5c5c5;
     width: 20px;
     height: 20px;
     text-align: center;
@@ -109,7 +108,7 @@ aside > p {
 
 .answer:hover {
     transform: scale(1.03);
-    background-color: #276edb;
+    background-color: #00BFA6; /*c5c5c5*/
     color: white;
     opacity: 1;
     cursor: pointer;
@@ -143,7 +142,7 @@ input {
 }
 
 div.div-answer input:checked ~ div.highlight {
-    background-color: goldenrod;
+    background-color: #efe57b;
     color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
