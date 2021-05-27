@@ -1,43 +1,20 @@
 let attempt = 3;
 
 let valid = true;
-let users = [{email: "test@gmail.com", pass: "12345678"},
-    {email: "test2@gmail.com", pass: "12345678"},
-    {email: "test3@gmail.com", pass: "12345678"}];
-
-function register() {
-    let email = document.getElementById("email-r").value;
-    let password = document.getElementById("pass-r").value;
-    let repassword = document.getElementById("repass-r").value;
-    if (email === '' || password === '' || repassword === '') {
-        alert("Please fill all fields...!!!!!!");
-        return false;
-    } else if ((password.length) < 8) {
-        alert("Password should at least 8 character in length...!!!!!!");
-        return false;
-    } else if (!(password).match(repassword)) {
-        alert("Your passwords don't match. Try again?");
-        return false;
-    } else {
-        let object = {email: email.value, pass: password.value};
-        users.push(object);
-        window.location = "../index.html";
-        return false;
-    }
-}
+var users = JSON.parse(localStorage.getItem("users"));
 
 function validate() {
     let email = document.getElementById("email").value;
-    console.log(email)
-    console.log(typeof email)
-    console.log(users[0].email)
-    console.log(typeof users[0].email)
     let password = document.getElementById("pass").value;
+    if (email === '' || password === '') {
+        alert("Please fill all fields...!!!!!!");
+        return false;
+    }
     for (let i = 0; i < users.length; i++) {
         if (email === users[i].email && password === users[i].pass) {
             valid = true;
-            alert("Login successfully");
-            window.location = "../dashboard.html";
+            // alert("Login successfully");
+            window.location = "dashboard.html";
             return false;
         } else {
             valid = false;
@@ -45,6 +22,7 @@ function validate() {
     }
     if (valid === false) {
         attempt--;
+        alert("wrong email or password - you have " + attempt + " remain attempts");
         if (attempt === 0) {
             document.getElementById("email").disabled = true;
             document.getElementById("pass").disabled = true;
