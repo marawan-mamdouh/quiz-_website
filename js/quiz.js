@@ -1,8 +1,8 @@
 let score = [];
 let questionNumber = 1;
-let answers = [];
-let answerID = [];
-
+let answers = ["", "", "", "", "", "", "", "", "", ""];
+let answerID = ["", "", "", "", "", "", "", "", "", ""];
+let sum = 0;
 let HTMLquestions = [
 
     {
@@ -68,7 +68,6 @@ let HTMLquestions = [
     }
 
 ];
-
 let CSSquestions = [
 
     {
@@ -390,8 +389,10 @@ function next() {
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
-            const sum = score.reduce((a, b) => a + b, 0);
-            alert(sum)
+            sum = score.reduce((a, b) => a + b, 0);
+            window.location = "score.html";
+            // alert(sum)
+            localStorage.setItem("score", sum);
             document.getElementById("next").disabled = true;
             document.getElementById("prev").disabled = true;
         }
@@ -403,7 +404,7 @@ function next() {
     } else {
         alert("please chose answer")
     }
-    if (answerID[questionNumber - 1] !== undefined) {
+    if (answerID[questionNumber - 1] !== undefined && answerID[questionNumber - 1] !== "") {
         document.getElementById(answerID[questionNumber - 1]).checked = true;
     }
 }
@@ -430,3 +431,37 @@ function prev() {
         document.getElementById("span").innerText = questionNumber + "";
     }
 }
+
+document.querySelectorAll('.num').forEach(item => {
+    item.addEventListener('click', event => {
+        if (questionNumber > 9) {
+            document.getElementById("question-number").innerText = "Question " + item.innerHTML;
+            document.getElementById("answer1").checked = false;
+            document.getElementById("answer2").checked = false;
+            document.getElementById("answer3").checked = false;
+            document.getElementById("answer4").checked = false;
+            if (document.getElementById(answerID[item.innerHTML - 1])) {
+                document.getElementById(answerID[item.innerHTML - 1]).checked = true;
+            }
+            document.getElementById("question").innerText = HTMLquestions[item.innerHTML - 1].question;
+            document.getElementById("label-answer1").innerText = HTMLquestions[item.innerHTML - 1].choices[0];
+            document.getElementById("label-answer2").innerText = HTMLquestions[item.innerHTML - 1].choices[1];
+            document.getElementById("label-answer3").innerText = HTMLquestions[item.innerHTML - 1].choices[2];
+            document.getElementById("label-answer4").innerText = HTMLquestions[item.innerHTML - 1].choices[3];
+            document.getElementById("answer1").value = HTMLquestions[item.innerHTML - 1].choices[0];
+            document.getElementById("answer2").value = HTMLquestions[item.innerHTML - 1].choices[1];
+            document.getElementById("answer3").value = HTMLquestions[item.innerHTML - 1].choices[2];
+            document.getElementById("answer4").value = HTMLquestions[item.innerHTML - 1].choices[3];
+            document.getElementById("span").innerText = item.innerHTML + "";
+        }
+    })
+})
+
+document.querySelectorAll('.answer').forEach(item => {
+    item.addEventListener('click', event => {
+        let questionNumber = (item.parentElement.children.item(0).children.item(0).innerHTML.charAt(item.parentElement.children.item(0).children.item(0).innerHTML.length - 2) + item.parentElement.children.item(0).children.item(0).innerHTML.charAt(item.parentElement.children.item(0).children.item(0).innerHTML.length - 1)).trim();
+        console.log(questionNumber)
+        answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
+        answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
+    })
+})
