@@ -475,5 +475,12 @@ document.querySelectorAll('.answer').forEach(item => {
         console.log(questionNumber)
         answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
         answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
+        if (document.querySelector('input[name="answer"]:checked').value === HTMLquestions[questionNumber - 1].choices[HTMLquestions[questionNumber - 1].answer - 1]) {
+            score[questionNumber - 1] = 10;
+            console.log("questionNumber -> " + questionNumber)
+        } else if (document.querySelector('input[name="answer"]:checked').value !== HTMLquestions[questionNumber - 1].choices[HTMLquestions[questionNumber - 1].answer - 1]) {
+            score[questionNumber - 1] = 0;
+            console.log("questionNumber -> " + questionNumber)
+        }
     })
 })
