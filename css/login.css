@@ -111,11 +111,10 @@ body {
 }
 
 svg {
-    transition: all .4s ease-in-out;
+    transition: all 0.8s ease-in-out;
 }
 
 svg:hover {
-
     transform: scale(1.01);
 }
 
