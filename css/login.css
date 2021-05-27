@@ -110,6 +110,15 @@ body {
     }
 }
 
+svg {
+    transition: all .4s ease-in-out;
+}
+
+svg:hover {
+
+    transform: scale(1.01);
+}
+
 .button-swing:focus {
     animation: swing 1s ease;
     animation-iteration-count: 1;
