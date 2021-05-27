@@ -36,8 +36,8 @@ function validate() {
     for (let i = 0; i < users.length; i++) {
         if (email === users[i].email && password === users[i].pass) {
             valid = true;
-            alert("Login successfully");
-            window.location = "../dashboard.html";
+            // alert("Login successfully");
+            window.location = "dashboard.html";
             return false;
         } else {
             valid = false;
