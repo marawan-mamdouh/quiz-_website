@@ -2,7 +2,7 @@ let score = [];
 let questionNumber = 1;
 let answers = [];
 let answerID = [];
-
+let sum = 0;
 let HTMLquestions = [
 
     {
@@ -68,7 +68,6 @@ let HTMLquestions = [
     }
 
 ];
-
 let CSSquestions = [
 
     {
@@ -390,8 +389,10 @@ function next() {
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
             answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
-            const sum = score.reduce((a, b) => a + b, 0);
-            alert(sum)
+            sum = score.reduce((a, b) => a + b, 0);
+            window.location = "score.html";
+            // alert(sum)
+            localStorage.setItem("score", sum);
             document.getElementById("next").disabled = true;
             document.getElementById("prev").disabled = true;
         }
