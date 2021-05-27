@@ -3,6 +3,7 @@ let questionNumber = 1;
 let answers = ["", "", "", "", "", "", "", "", "", ""];
 let answerID = ["", "", "", "", "", "", "", "", "", ""];
 let sum = 0;
+
 let HTMLquestions = [
 
     {
