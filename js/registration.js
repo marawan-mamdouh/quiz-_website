@@ -2,6 +2,10 @@ let users = [{email: "test@gmail.com", pass: "12345678"},
     {email: "test2@gmail.com", pass: "12345678"},
     {email: "test3@gmail.com", pass: "12345678"}];
 
+if (localStorage.getItem("users") !== null) {
+    users = JSON.parse(localStorage.getItem("users"));
+}
+
 function register() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("pass").value;
