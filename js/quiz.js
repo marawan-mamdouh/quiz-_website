@@ -386,8 +386,6 @@ function next() {
 
         if (questionNumber < questions.length) {
             document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
-            answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
-            // answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
             document.getElementById("question").innerText = questions[questionNumber - 1].question;
             console.log(answers);
@@ -412,9 +410,6 @@ function next() {
                 }
             }
         } else if (answerID[9] !== "" && questionNumber === 10) {
-            answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
-            // answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
-            // document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
             sum = score.reduce((a, b) => a + b, 0);
             window.location = "score.html";
             // alert(sum)
@@ -438,9 +433,6 @@ function next() {
 function prev() {
     if (questionNumber !== 1) {
         document.getElementById("next").innerText = "Next";
-        // if (answerID[8] === "") {
-        // document.getElementsByClassName("num")[questionNumber - 2].style.backgroundColor = '#c5c5c5';
-        // }
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
@@ -484,7 +476,7 @@ document.querySelectorAll('.num').forEach(item => {
             document.getElementById("span").innerText = item.innerHTML + "";
             if (questionNumber !== 10) {
                 document.getElementById("next").innerText = "Next";
-            }else if (questionNumber === 10) {
+            } else if (questionNumber === 10) {
                 document.getElementById("next").innerText = "Submit";
             }
         }
