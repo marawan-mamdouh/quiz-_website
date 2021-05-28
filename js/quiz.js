@@ -387,7 +387,7 @@ function next() {
         if (questionNumber < questions.length) {
             document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
-            answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
+            // answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
             document.getElementById("question-number").innerText = "Question " + ++questionNumber;
             document.getElementById("question").innerText = questions[questionNumber - 1].question;
             console.log(answers);
@@ -401,8 +401,8 @@ function next() {
             document.getElementById("answer3").value = questions[questionNumber - 1].choices[2];
             document.getElementById("answer4").value = questions[questionNumber - 1].choices[3];
             document.getElementById("span").innerText = questionNumber + "";
-            if (questionNumber === questions.length) {
-                document.getElementById("next").innerText = "Finish";
+            if (answerID[8] !== "" && questionNumber > 9) {
+                document.getElementById("next").innerText = "Submit";
             }
             //add cursor pointer to num
             if (questionNumber > 9) {
@@ -411,10 +411,10 @@ function next() {
                     elements[i].style.cursor = "pointer";
                 }
             }
-        } else if (questionNumber === questions.length) {
+        } else if (answerID[9] !== "" && questionNumber === 10) {
             answers[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').value);
-            answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
-            document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
+            // answerID[questionNumber - 1] = (document.querySelector('input[name="answer"]:checked').id);
+            // document.getElementsByClassName("num")[questionNumber - 1].style.backgroundColor = '#efe57b';
             sum = score.reduce((a, b) => a + b, 0);
             window.location = "score.html";
             // alert(sum)
@@ -438,7 +438,9 @@ function next() {
 function prev() {
     if (questionNumber !== 1) {
         document.getElementById("next").innerText = "Next";
-        document.getElementsByClassName("num")[questionNumber - 2].style.backgroundColor = '#c5c5c5';
+        // if (answerID[8] === "") {
+        // document.getElementsByClassName("num")[questionNumber - 2].style.backgroundColor = '#c5c5c5';
+        // }
         document.getElementById("answer1").checked = false;
         document.getElementById("answer2").checked = false;
         document.getElementById("answer3").checked = false;
@@ -460,12 +462,9 @@ function prev() {
 
 document.querySelectorAll('.num').forEach(item => {
     item.addEventListener('click', event => {
-        if (questionNumber > 9) {
-            // for (let i = 0; i < 10; i++) {
-            //     elements = document.getElementsByClassName("num")
-            //     elements[i].style.cursor = "pointer";
-            // }
+        if (answerID[8] !== "") {
             document.getElementById("question-number").innerText = "Question " + item.innerHTML;
+            questionNumber = parseInt(item.innerHTML);
             document.getElementById("answer1").checked = false;
             document.getElementById("answer2").checked = false;
             document.getElementById("answer3").checked = false;
@@ -483,6 +482,11 @@ document.querySelectorAll('.num').forEach(item => {
             document.getElementById("answer3").value = questions[item.innerHTML - 1].choices[2];
             document.getElementById("answer4").value = questions[item.innerHTML - 1].choices[3];
             document.getElementById("span").innerText = item.innerHTML + "";
+            if (questionNumber !== 10) {
+                document.getElementById("next").innerText = "Next";
+            }else if (questionNumber === 10) {
+                document.getElementById("next").innerText = "Submit";
+            }
         }
     })
 })
@@ -499,6 +503,9 @@ document.querySelectorAll('.answer').forEach(item => {
         } else if (document.querySelector('input[name="answer"]:checked').value !== questions[questionNumber - 1].choices[questions[questionNumber - 1].answer - 1]) {
             score[questionNumber - 1] = 0;
             console.log("questionNumber -> " + questionNumber)
+        }
+        if (answerID[9] !== "") {
+            document.getElementsByClassName("num")[9].style.backgroundColor = '#efe57b';
         }
     })
 })
