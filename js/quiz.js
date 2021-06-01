@@ -411,7 +411,7 @@ function next() {
             }
         } else if (answerID[9] !== "" && questionNumber === 10) {
             sum = score.reduce((a, b) => a + b, 0);
-            window.location = "score.html";
+            window.location.replace("score.html");
             // alert(sum)
             localStorage.setItem("score", sum);
             document.getElementById("next").disabled = true;
